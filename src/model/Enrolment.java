@@ -1,3 +1,5 @@
+package model;
+
 public class Enrolment {
     private final Student student;
     private final Course course;
