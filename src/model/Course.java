@@ -52,8 +52,4 @@ public class Course {
                 ", numOfCredit=" + numOfCredit +
                 '}';
     }
-
-    public boolean euqals(Course other) {
-        return (this.courseID.equals(other.getCourseID()) || this.courseName.equals(other.getCourseName()));
-    }
 }

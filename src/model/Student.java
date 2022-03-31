@@ -44,8 +44,4 @@ public class Student {
                 ", date='" + date + '\'' +
                 '}';
     }
-
-    public boolean equals(Student other) {
-        return (this.studentID.equals(other.getStudentID()) || this.studentName.equals(other.getStudentName()));
-    }
 }
