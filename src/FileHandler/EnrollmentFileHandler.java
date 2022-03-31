@@ -21,7 +21,7 @@ public class EnrollmentFileHandler {
         for (String info : ReadCSV.readCSVFile(fileName)) {
             String[] data = info.split(",");
             Student s = new Student(data[0], data[1], data[2]);
-            Course c = new Course(data[3], data[4], Integer.valueOf(data[5]));
+            Course c = new Course(data[3], data[4], Integer.parseInt(data[5]));
             Enrollment e = new Enrollment(s,c,data[6]);
             if (enrollments.isEmpty() || !isExist(e)) {
                 enrollments.add(e);

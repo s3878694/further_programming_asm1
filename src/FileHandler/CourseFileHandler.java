@@ -17,7 +17,7 @@ public class CourseFileHandler {
     public void populateCourse(String fileName) {
         for (String info : ReadCSV.readCSVFile(fileName)) {
             String[] data = info.split(",");
-            Course c = new Course(data[3], data[4], Integer.valueOf(data[5]));
+            Course c = new Course(data[3], data[4], Integer.parseInt(data[5]));
             if ( courses.isEmpty() || (!isExist(c))) {
                 courses.add(c);
             }

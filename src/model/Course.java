@@ -52,4 +52,8 @@ public class Course {
                 ", numOfCredit=" + numOfCredit +
                 '}';
     }
+
+    public String toCsv() {
+        return courseID + "," + courseName + "," + numOfCredit + "\n";
+    }
 }
