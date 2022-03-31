@@ -1,12 +1,12 @@
 package model;
 
-public class Enrolment {
+public class Enrollment {
     private final String studentName;
     private final String courseName;
     private final String semester;
 
     // Constructor
-    public Enrolment(String studentName, String courseName, String semester) {
+    public Enrollment(String studentName, String courseName, String semester) {
         this.studentName = studentName;
         this.courseName = courseName;
         this.semester = semester;
@@ -27,7 +27,7 @@ public class Enrolment {
 
     @Override
     public String toString() {
-        return "Enrolment{" +
+        return "Enrollment{" +
                 "student=" + studentName +
                 ", course=" + courseName +
                 ", semester='" + semester + '\'' +
