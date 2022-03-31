@@ -20,9 +20,6 @@ public class StudentFileHandler {
             if ( students.isEmpty() || (!isExist(s))) {
                students.add(s);
             }
-//            if (!isExist(s)) {
-//                students.add(s);
-//            }
         }
     }
 
