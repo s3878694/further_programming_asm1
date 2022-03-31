@@ -1,24 +1,24 @@
 package model;
 
 public class Enrollment {
-    private final String studentName;
-    private final String courseName;
+    private final Student student;
+    private final Course course;
     private final String semester;
 
     // Constructor
-    public Enrollment(String studentName, String courseName, String semester) {
-        this.studentName = studentName;
-        this.courseName = courseName;
+    public Enrollment(Student student, Course course, String semester) {
+        this.student = student;
+        this.course = course;
         this.semester = semester;
     }
 
     // Getter
-    public String getStudent() {
-        return studentName;
+    public Student getStudent() {
+        return student;
     }
 
-    public String getCourse() {
-        return courseName;
+    public Course getCourse() {
+        return course;
     }
 
     public String getSemester() {
@@ -28,8 +28,8 @@ public class Enrollment {
     @Override
     public String toString() {
         return "Enrollment{" +
-                "student=" + studentName +
-                ", course=" + courseName +
+                "student=" + student +
+                ", course=" + course +
                 ", semester='" + semester + '\'' +
                 '}';
     }

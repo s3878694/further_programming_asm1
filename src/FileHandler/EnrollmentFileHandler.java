@@ -1,7 +1,9 @@
 package FileHandler;
 
 import Helper.ReadCSV;
+import model.Course;
 import model.Enrollment;
+import model.Student;
 
 import java.util.ArrayList;
 
@@ -18,7 +20,9 @@ public class EnrollmentFileHandler {
     public void populateEnrollment(String fileName) {
         for (String info : ReadCSV.readCSVFile(fileName)) {
             String[] data = info.split(",");
-            Enrollment e = new Enrollment(data[1], data[4], data[6]);
+            Student s = new Student(data[0], data[1], data[2]);
+            Course c = new Course(data[3], data[4], Integer.valueOf(data[5]));
+            Enrollment e = new Enrollment(s,c,data[6]);
             if (enrollments.isEmpty() || !isExist(e)) {
                 enrollments.add(e);
             }
@@ -28,7 +32,7 @@ public class EnrollmentFileHandler {
 
     public boolean isExist(Enrollment e) {
         for (Enrollment enrollment: enrollments) {
-            if (enrollment.getStudent().equals(e.getStudent()) && enrollment.getCourse().equals(e.getCourse()) && enrollment.getSemester().equals(e.getSemester())) {
+            if(enrollment.getStudent().getStudentID().equals(e.getStudent().getStudentID()) && enrollment.getCourse().getCourseID().equals(e.getCourse().getCourseID()) && enrollment.getSemester().equals(e.getSemester())) {
                 return true;
             }
         }
