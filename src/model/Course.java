@@ -46,11 +46,7 @@ public class Course {
 
     @Override
     public String toString() {
-        return "Course{" +
-                "courseID='" + courseID + '\'' +
-                ", courseName='" + courseName + '\'' +
-                ", numOfCredit=" + numOfCredit +
-                '}';
+        return "ID: " + courseID + "\n" + "Course: " + courseName + "\n" + "Credit: " + numOfCredit + "\n";
     }
 
     public String toCsv() {

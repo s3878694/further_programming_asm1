@@ -27,10 +27,10 @@ public class Enrollment {
 
     @Override
     public String toString() {
-        return "Enrollment{" +
-                "student=" + student +
-                ", course=" + course +
-                ", semester='" + semester + '\'' +
-                '}';
+        return "Names: " + student.getStudentName() + "\n" + "Course: " + course.getCourseName() + "\n" + "Semester: " + semester + "\n";
+    }
+
+    public String toCsv() {
+        return student.getStudentName() + "," + course.getCourseName() + "," + semester + "\n";
     }
 }

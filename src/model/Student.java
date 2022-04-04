@@ -38,10 +38,10 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "studentID='" + studentID + '\'' +
-                ", studentName='" + studentName + '\'' +
-                ", date='" + date + '\'' +
-                '}';
+        return "ID: " + studentID + "\n" + "Name: " + studentName + "\n" + "Dob: " + date + "\n";
+    }
+
+    public String toCsv() {
+        return studentID + "," + studentName + "," + date + "\n";
     }
 }
