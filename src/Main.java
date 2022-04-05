@@ -32,14 +32,16 @@ public class Main {
 //        }
         StudentEnrollment studentEnrollmentManager = new StudentEnrollment();
         studentEnrollmentManager.populateData("default.csv");
-        System.out.println(studentEnrollmentManager.getAll());
-        System.out.println(studentEnrollmentManager.getOne("S101312", "COSC4030", "2020C"));
+//        System.out.println(studentEnrollmentManager.getAll());
+//        System.out.println(studentEnrollmentManager.getOne("S101312", "COSC4030", "2020C"));
 
         Enrollment e = new Enrollment(studentEnrollmentManager.getStudent("S101312"), studentEnrollmentManager.getCourse("COSC4030"), "2021C");
-//        System.out.println(studentEnrollmentManager.add(e));
-//        System.out.println(studentEnrollmentManager.delete(e));
+        System.out.println(studentEnrollmentManager.add(e));
+        System.out.println(studentEnrollmentManager.delete(e));
 
-        System.out.println(studentEnrollmentManager.getEnrollmentFileHandler().getEnrolments());
+//        System.out.println(studentEnrollmentManager.getEnrollmentFileHandler().getEnrolments());
+//        studentEnrollmentManager.printStudentsPerCoursePerSemester("COSC4030", "2020C");
+        studentEnrollmentManager.printCoursesPerSemester("2021A");
     }
 
 }

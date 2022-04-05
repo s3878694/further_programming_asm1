@@ -58,7 +58,7 @@ public class StudentEnrollment implements StudentEnrollmentManager {
     /***
      * Check if exist Enrollment
      * @param e Enrollment
-     * @return boolen
+     * @return boolean
      */
     public boolean isExist(Enrollment e) {
         for (Enrollment enrollment: enrollments) {
@@ -93,7 +93,7 @@ public class StudentEnrollment implements StudentEnrollmentManager {
 
     /***
      * Get Course File Handler
-     * @return
+     * @return Course File Handler
      */
     public CourseFileHandler getCourseFileHandler() {
         return courseFileHandler;
@@ -101,7 +101,7 @@ public class StudentEnrollment implements StudentEnrollmentManager {
 
     /***
      * Get Student File Hander
-     * @return
+     * @return Student File Handler
      */
     public StudentFileHandler getStudentFileHandler() {
         return studentFileHandler;
@@ -120,7 +120,6 @@ public class StudentEnrollment implements StudentEnrollmentManager {
             return true;
         } else {
             return false;
-
         }
     }
 
@@ -200,6 +199,12 @@ public class StudentEnrollment implements StudentEnrollmentManager {
         }
     }
 
+    /***
+     * Get Courses Per Student per Semester
+     * @param studentID
+     * @param semester
+     * @return
+     */
     public ArrayList<Course> getCoursesPerStudentPerSemester(String studentID, String semester) {
         ArrayList<Course> temp = new ArrayList<>();
         for (Enrollment e : enrollments) {
@@ -210,6 +215,11 @@ public class StudentEnrollment implements StudentEnrollmentManager {
         return temp;
     }
 
+    /***
+     * Print Course Per Student Per Semester
+     * @param studentID
+     * @param semester
+     */
     public void printCoursesPerStudentPerSemester(String studentID, String semester) {
         ArrayList<Course> temp = getCoursesPerStudentPerSemester(studentID, semester);
         courseFileHandler.setCourses(temp);
@@ -222,6 +232,54 @@ public class StudentEnrollment implements StudentEnrollmentManager {
         }
     }
 
+    /***
+     * Get Courses in specific semester
+     * @param semester
+     * @return array of Course
+     */
+    public ArrayList<Course> getCoursesPerSemester(String semester) {
+        ArrayList<Course> temp = new ArrayList<>();
+        for (Enrollment e : enrollments) {
+            if (e.getSemester().equals(semester)) {
+                if (temp.isEmpty() || !isExistCourse(temp,e.getCourse())) {
+                    temp.add(e.getCourse());
+                }
+            }
+        }
+        return temp;
+    }
+
+    /***
+     * Print all Courses in 1 Semester
+     * @param semester
+     */
+    public void printCoursesPerSemester(String semester) {
+        ArrayList<Course> temp = getCoursesPerSemester(semester);
+        courseFileHandler.setCourses(temp);
+        if (temp.isEmpty()) {
+            System.out.println("There are no Course in this semester");
+        } else {
+            for (Course c : temp) {
+                System.out.println(c);
+            }
+        }
+    }
+
+    /***
+     * Check if exist a course in array
+     * @param courses
+     * @param course
+     * @return boolean
+     */
+    public boolean isExistCourse(ArrayList<Course> courses, Course course) {
+        for (Course c : courses) {
+            if (c.getCourseID().equals(course.getCourseID())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     /***
      * Get one Student from Students
@@ -231,7 +289,7 @@ public class StudentEnrollment implements StudentEnrollmentManager {
     public Student getStudent(String studentID) {
       for (Student s : students) {
           if (s.getStudentID().equals(studentID)) {
-              return s;
+              return s.clone();
           }
       }
       return null;
@@ -249,6 +307,24 @@ public class StudentEnrollment implements StudentEnrollmentManager {
             }
         }
         return null;
+    }
+
+    public boolean courseExist(String courseID) {
+        for (Course c : courses) {
+            if (c.getCourseID().equals(courseID)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean studentExist(String studentID) {
+        for (Student s : students) {
+            if (s.getStudentID().equals(studentID)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 
