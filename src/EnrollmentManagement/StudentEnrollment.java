@@ -18,7 +18,7 @@ public class StudentEnrollment implements StudentEnrollmentManager {
 
     /***
      * Populate Data from csv
-     * @param fileName
+     * @param fileName name of file
      */
     public void populateData(String fileName) {
         for (String info : ReadCSV.readCSVFile(fileName)) {
@@ -100,7 +100,7 @@ public class StudentEnrollment implements StudentEnrollmentManager {
     }
 
     /***
-     * Get Student File Hander
+     * Get Student File Handler
      * @return Student File Handler
      */
     public StudentFileHandler getStudentFileHandler() {
@@ -124,8 +124,8 @@ public class StudentEnrollment implements StudentEnrollmentManager {
     }
 
     /***
-     * Delete an erollment
-     * @param e
+     * Delete an enrollment
+     * @param e enrollment
      * @return boolean
      */
     @Override
@@ -142,9 +142,9 @@ public class StudentEnrollment implements StudentEnrollmentManager {
 
     /***
      * Get one enrollment
-     * @param studentID
-     * @param courseID
-     * @param semester
+     * @param studentID id of student
+     * @param courseID id of course
+     * @param semester semester
      * @return one enrollment
      */
     @Override
@@ -168,8 +168,8 @@ public class StudentEnrollment implements StudentEnrollmentManager {
 
     /***
      * Get Student who studied in Course and Semester
-     * @param courseID
-     * @param semester
+     * @param courseID id of course
+     * @param semester semester
      * @return Array of Student
      */
     public ArrayList<Student> getStudentsPerCoursePerSemester(String courseID, String semester) {
@@ -184,8 +184,8 @@ public class StudentEnrollment implements StudentEnrollmentManager {
 
     /***
      * Print all student in a Course and Semester
-     * @param courseID
-     * @param semester
+     * @param courseID id of course
+     * @param semester semester
      */
     public void printStudentsPerCoursePerSemester(String courseID, String semester) {
         ArrayList<Student> temp = getStudentsPerCoursePerSemester(courseID, semester);
@@ -201,9 +201,9 @@ public class StudentEnrollment implements StudentEnrollmentManager {
 
     /***
      * Get Courses Per Student per Semester
-     * @param studentID
-     * @param semester
-     * @return
+     * @param studentID id of student
+     * @param semester semester
+     * @return Array of Course
      */
     public ArrayList<Course> getCoursesPerStudentPerSemester(String studentID, String semester) {
         ArrayList<Course> temp = new ArrayList<>();
@@ -217,8 +217,8 @@ public class StudentEnrollment implements StudentEnrollmentManager {
 
     /***
      * Print Course Per Student Per Semester
-     * @param studentID
-     * @param semester
+     * @param studentID id of student
+     * @param semester semester
      */
     public void printCoursesPerStudentPerSemester(String studentID, String semester) {
         ArrayList<Course> temp = getCoursesPerStudentPerSemester(studentID, semester);
@@ -234,7 +234,7 @@ public class StudentEnrollment implements StudentEnrollmentManager {
 
     /***
      * Get Courses in specific semester
-     * @param semester
+     * @param semester semester
      * @return array of Course
      */
     public ArrayList<Course> getCoursesPerSemester(String semester) {
@@ -251,7 +251,7 @@ public class StudentEnrollment implements StudentEnrollmentManager {
 
     /***
      * Print all Courses in 1 Semester
-     * @param semester
+     * @param semester semester
      */
     public void printCoursesPerSemester(String semester) {
         ArrayList<Course> temp = getCoursesPerSemester(semester);
@@ -267,8 +267,8 @@ public class StudentEnrollment implements StudentEnrollmentManager {
 
     /***
      * Check if exist a course in array
-     * @param courses
-     * @param course
+     * @param courses arraylist of course
+     * @param course course
      * @return boolean
      */
     public boolean isExistCourse(ArrayList<Course> courses, Course course) {
@@ -283,7 +283,7 @@ public class StudentEnrollment implements StudentEnrollmentManager {
 
     /***
      * Get one Student from Students
-     * @param studentID
+     * @param studentID id of student
      * @return Student
      */
     public Student getStudent(String studentID) {
@@ -297,7 +297,7 @@ public class StudentEnrollment implements StudentEnrollmentManager {
 
     /***
      * Get one Courses from Courses
-     * @param courseID
+     * @param courseID id of course
      * @return Course
      */
     public Course getCourse(String courseID) {
@@ -310,8 +310,8 @@ public class StudentEnrollment implements StudentEnrollmentManager {
     }
 
     /***
-     * Check if Course exist in database
-     * @param courseID
+     * Check if course  is exist in database
+     * @param courseID id of course
      * @return boolean
      */
     public boolean courseExist(String courseID) {
@@ -325,7 +325,7 @@ public class StudentEnrollment implements StudentEnrollmentManager {
 
     /***
      * check if student exist in database
-     * @param studentID
+     * @param studentID id of student
      * @return boolean
      */
     public boolean studentExist(String studentID) {

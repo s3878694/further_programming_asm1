@@ -1,10 +1,8 @@
 package Helper;
 
 import model.*;
-import FileHandler.*;
 import EnrollmentManagement.*;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Menu {
@@ -26,44 +24,41 @@ public class Menu {
             displayOption();
             String opt = sc.nextLine();
             switch (opt) {
-                case "0":
+                case "0" -> {
                     System.out.println("Quitting program");
                     isRunning = false;
-                    break;
-                case "1":
+                }
+                case "1" -> {
                     addEnrollment();
                     pressToContinue();
-                    break;
-                case "2":
+                }
+                case "2" -> {
                     deleteEnrollment();
                     pressToContinue();
-                    break;
-                case "3":
+                }
+                case "3" -> {
                     getOneEnrollment();
                     pressToContinue();
-                    break;
-                case "4":
+                }
+                case "4" -> {
                     for (Enrollment e : studentEnrollment.getAll()) {
                         System.out.println(e);
                     }
                     pressToContinue();
-                    break;
-                case "5":
+                }
+                case "5" -> {
                     printCoursesPerStudentPerSemester();
                     pressToContinue();
-                    break;
-                case "6":
+                }
+                case "6" -> {
                     printStudentsPerCoursePerSemester();
                     pressToContinue();
-                    break;
-                case "7":
+                }
+                case "7" -> {
                     printCoursesPerSemester();
                     pressToContinue();
-                    break;
-                default:
-                    System.out.println("Invalid input!");
-
-
+                }
+                default -> System.out.println("Invalid input!");
             }
 
         } while (isRunning);
@@ -82,8 +77,8 @@ public class Menu {
      */
     private void addEnrollment() {
         Scanner sc = new Scanner(System.in);
-        String studentID = "";
-        String courseID = "";
+        String studentID;
+        String courseID;
         while (true) {
             System.out.println("Enter the student id: ");
             studentID = sc.nextLine();
@@ -106,7 +101,7 @@ public class Menu {
         String semester = sc.nextLine();
         Enrollment e = new Enrollment(studentEnrollment.getStudent(studentID), studentEnrollment.getCourse(courseID), semester);
         if (studentEnrollment.add(e)) {
-            System.out.println("Succesfully added");
+            System.out.println("Successfully added");
         } else {
             System.out.println("Enrollment not added");
         }
@@ -118,8 +113,8 @@ public class Menu {
      */
     private void deleteEnrollment() {
         Scanner sc = new Scanner(System.in);
-        String studentID = "";
-        String courseID = "";
+        String studentID;
+        String courseID ;
         while (true) {
             System.out.println("Enter the student id: ");
             studentID = sc.nextLine();
@@ -142,7 +137,7 @@ public class Menu {
         String semester = sc.nextLine();
         Enrollment e = new Enrollment(studentEnrollment.getStudent(studentID), studentEnrollment.getCourse(courseID), semester);
         if (studentEnrollment.delete(e)) {
-            System.out.println("Succesfully added");
+            System.out.println("Successfully added");
         } else {
             System.out.println("Enrollment not added");
         }
@@ -153,8 +148,8 @@ public class Menu {
      */
     private void getOneEnrollment() {
         Scanner sc = new Scanner(System.in);
-        String studentID = "";
-        String courseID = "";
+        String studentID;
+        String courseID;
         while (true) {
             System.out.println("Enter the student id: ");
             studentID = sc.nextLine();
@@ -183,7 +178,7 @@ public class Menu {
      */
     private void printCoursesPerStudentPerSemester() {
         Scanner sc = new Scanner(System.in);
-        String studentID = "";
+        String studentID;
         while (true) {
             System.out.println("Enter the student id: ");
             studentID = sc.nextLine();
@@ -219,7 +214,7 @@ public class Menu {
      */
     private void printStudentsPerCoursePerSemester() {
         Scanner sc = new Scanner(System.in);
-        String courseID = "";
+        String courseID;
         while (true) {
             System.out.println("Enter the course id: ");
             courseID = sc.nextLine();
