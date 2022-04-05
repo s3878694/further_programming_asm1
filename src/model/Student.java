@@ -31,6 +31,10 @@ public class Student {
         return new Student(data[0], data[1], data[2]);
     }
 
+    /***
+     * Return a clone of Studnet
+     * @return student
+     */
     public Student clone() {
         return new Student(this.studentID, this.studentName, this.date);
     }

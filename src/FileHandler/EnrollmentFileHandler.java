@@ -5,11 +5,14 @@ import model.Course;
 import model.Enrollment;
 import model.Student;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
 public class EnrollmentFileHandler {
-    private ArrayList<Enrollment> enrollments = new ArrayList<>();
+    private ArrayList<Enrollment> enrollments;
 
     public EnrollmentFileHandler() {}
 
@@ -17,25 +20,29 @@ public class EnrollmentFileHandler {
         return enrollments;
     }
 
-    public void populateEnrollment(String fileName) {
-        for (String info : ReadCSV.readCSVFile(fileName)) {
-            String[] data = info.split(",");
-            Student s = new Student(data[0], data[1], data[2]);
-            Course c = new Course(data[3], data[4], Integer.parseInt(data[5]));
-            Enrollment e = new Enrollment(s,c,data[6]);
-            if (enrollments.isEmpty() || !isExist(e)) {
-                enrollments.add(e);
-            }
-        }
-
+    public void setEnrollments(ArrayList<Enrollment> enrollments) {
+        this.enrollments = enrollments;
     }
 
-    public boolean isExist(Enrollment e) {
-        for (Enrollment enrollment: enrollments) {
-            if(enrollment.getStudent().getStudentID().equals(e.getStudent().getStudentID()) && enrollment.getCourse().getCourseID().equals(e.getCourse().getCourseID()) && enrollment.getSemester().equals(e.getSemester())) {
-                return true;
+    /***
+     * Write data to CSV file
+     */
+    public void dumpToFile() {
+        try {
+            File newFile = new File("Enrollment.csv");
+            FileWriter fileWriter = new FileWriter(newFile);
+            if (enrollments.isEmpty()) {
+                System.out.println("No enrollment to write");
+                fileWriter.close();
+            } else {
+                for (Enrollment e : enrollments) {
+                    fileWriter.append(e.toCsv());
+                }
+                fileWriter.close();
+                System.out.println("Added to file");
             }
+        } catch (IOException e) {
+            System.out.println("Cannot save to File");
         }
-        return false;
     }
 }

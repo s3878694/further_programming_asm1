@@ -10,6 +10,10 @@ public class StudentEnrollment implements StudentEnrollmentManager {
     private ArrayList<Student> students = new ArrayList<>();
     private ArrayList<Course> courses = new ArrayList<>();
 
+    private EnrollmentFileHandler enrollmentFileHandler = new EnrollmentFileHandler();
+    private StudentFileHandler studentFileHandler = new StudentFileHandler();
+    private CourseFileHandler courseFileHandler = new CourseFileHandler();
+
     public StudentEnrollment() {}
 
     /***
@@ -32,6 +36,9 @@ public class StudentEnrollment implements StudentEnrollmentManager {
                 enrollments.add(e);
             }
         }
+        studentFileHandler.setStudents(students);
+        courseFileHandler.setCourses(courses);
+        enrollmentFileHandler.setEnrollments(enrollments);
     }
 
     /***
@@ -76,10 +83,40 @@ public class StudentEnrollment implements StudentEnrollmentManager {
         return false;
     }
 
+    /***
+     * Get Enrollment File Handler
+     * @return Enrollment File Handler
+     */
+    public EnrollmentFileHandler getEnrollmentFileHandler() {
+        return enrollmentFileHandler;
+    }
+
+    /***
+     * Get Course File Handler
+     * @return
+     */
+    public CourseFileHandler getCourseFileHandler() {
+        return courseFileHandler;
+    }
+
+    /***
+     * Get Student File Hander
+     * @return
+     */
+    public StudentFileHandler getStudentFileHandler() {
+        return studentFileHandler;
+    }
+
+    /***
+     * Add an Enrollment
+     * @param e enrollment
+     * @return boolean
+     */
     @Override
     public boolean add(Enrollment e) {
         if (!isExist(e)) {
             enrollments.add(e);
+            enrollmentFileHandler.setEnrollments(enrollments);
             return true;
         } else {
             return false;
@@ -87,17 +124,30 @@ public class StudentEnrollment implements StudentEnrollmentManager {
         }
     }
 
+    /***
+     * Delete an erollment
+     * @param e
+     * @return boolean
+     */
     @Override
     public boolean delete(Enrollment e) {
       for (int i = 0; i < enrollments.size(); i++) {
           if (enrollments.get(i).getStudent().getStudentID().equals(e.getStudent().getStudentID()) && enrollments.get(i).getCourse().getCourseID().equals(e.getCourse().getCourseID()) && enrollments.get(i).getSemester().equals(e.getSemester())) {
               enrollments.remove(i);
+              enrollmentFileHandler.setEnrollments(enrollments);
               return true;
           }
       }
       return false;
     }
 
+    /***
+     * Get one enrollment
+     * @param studentID
+     * @param courseID
+     * @param semester
+     * @return one enrollment
+     */
     @Override
     public Enrollment getOne(String studentID, String courseID, String semester) {
         for (Enrollment e : enrollments) {
@@ -108,11 +158,76 @@ public class StudentEnrollment implements StudentEnrollmentManager {
         return null;
     }
 
+    /***
+     * Get all enrollments
+     * @return ArrayList of Enrollments
+     */
     @Override
     public ArrayList<Enrollment> getAll() {
         return enrollments;
     }
 
+    /***
+     * Get Student who studied in Course and Semester
+     * @param courseID
+     * @param semester
+     * @return Array of Student
+     */
+    public ArrayList<Student> getStudentsPerCoursePerSemester(String courseID, String semester) {
+        ArrayList<Student> temp = new ArrayList<>();
+        for (Enrollment e : enrollments) {
+            if (e.getCourse().getCourseID().equals(courseID) && e.getSemester().equals(semester)) {
+                temp.add(e.getStudent());
+            }
+        }
+        return temp;
+    }
+
+    /***
+     * Print all student in a Course and Semester
+     * @param courseID
+     * @param semester
+     */
+    public void printStudentsPerCoursePerSemester(String courseID, String semester) {
+        ArrayList<Student> temp = getStudentsPerCoursePerSemester(courseID, semester);
+        studentFileHandler.setStudents(temp);
+        if (temp.isEmpty()) {
+            System.out.println("There are no Students");
+        } else {
+            for (Student s : temp) {
+                System.out.println(s);
+            }
+        }
+    }
+
+    public ArrayList<Course> getCoursesPerStudentPerSemester(String studentID, String semester) {
+        ArrayList<Course> temp = new ArrayList<>();
+        for (Enrollment e : enrollments) {
+            if (e.getStudent().getStudentID().equals(studentID) && e.getSemester().equals(semester)) {
+                temp.add(e.getCourse());
+            }
+        }
+        return temp;
+    }
+
+    public void printCoursesPerStudentPerSemester(String studentID, String semester) {
+        ArrayList<Course> temp = getCoursesPerStudentPerSemester(studentID, semester);
+        courseFileHandler.setCourses(temp);
+        if (temp.isEmpty()) {
+            System.out.println("There are no Courses");
+        } else {
+            for (Course c : temp) {
+                System.out.println(c);
+            }
+        }
+    }
+
+
+    /***
+     * Get one Student from Students
+     * @param studentID
+     * @return Student
+     */
     public Student getStudent(String studentID) {
       for (Student s : students) {
           if (s.getStudentID().equals(studentID)) {
@@ -122,6 +237,11 @@ public class StudentEnrollment implements StudentEnrollmentManager {
       return null;
     }
 
+    /***
+     * Get one Courses from Courses
+     * @param courseID
+     * @return Course
+     */
     public Course getCourse(String courseID) {
         for (Course c : courses) {
             if (c.getCourseID().equals(courseID)) {

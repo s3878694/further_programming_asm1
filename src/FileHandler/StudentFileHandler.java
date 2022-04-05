@@ -1,11 +1,13 @@
 package FileHandler;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import model.Student;
-import Helper.ReadCSV;
 
 public class StudentFileHandler {
-    private ArrayList<Student> students = new ArrayList<>();
+    private ArrayList<Student> students;
 
     public StudentFileHandler() {}
 
@@ -13,22 +15,29 @@ public class StudentFileHandler {
         return this.students;
     }
 
-    public void populateStudent(String fileName) {
-        for (String info : ReadCSV.readCSVFile(fileName)) {
-            String[] data = info.split(",");
-            Student s = new Student(data[0], data[1], data[2]);
-            if ( students.isEmpty() || (!isExist(s))) {
-               students.add(s);
-            }
-        }
+    public void setStudents(ArrayList<Student> students) {
+        this.students = students;
     }
 
-    public boolean isExist(Student s) {
-        for (Student student: students) {
-            if (student.getStudentID().equals(s.getStudentID())) {
-                return true;
+    /***
+     * Write data to CSV file
+     */
+    public void dumpToFile() {
+        try {
+            File newFile = new File("Student.csv");
+            FileWriter fileWriter = new FileWriter(newFile);
+            if (students.isEmpty()) {
+                System.out.println("No student to write");
+                fileWriter.close();
+            } else {
+                for (Student s : students) {
+                    fileWriter.append(s.toCsv());
+                }
+                fileWriter.close();
+                System.out.println("Added to file");
             }
+        } catch (IOException e) {
+            System.out.println("Cannot save to File");
         }
-        return false;
     }
 }
