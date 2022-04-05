@@ -309,6 +309,11 @@ public class StudentEnrollment implements StudentEnrollmentManager {
         return null;
     }
 
+    /***
+     * Check if Course exist in database
+     * @param courseID
+     * @return boolean
+     */
     public boolean courseExist(String courseID) {
         for (Course c : courses) {
             if (c.getCourseID().equals(courseID)) {
@@ -318,6 +323,11 @@ public class StudentEnrollment implements StudentEnrollmentManager {
         return false;
     }
 
+    /***
+     * check if student exist in database
+     * @param studentID
+     * @return boolean
+     */
     public boolean studentExist(String studentID) {
         for (Student s : students) {
             if (s.getStudentID().equals(studentID)) {
