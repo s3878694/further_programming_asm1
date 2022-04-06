@@ -19,8 +19,8 @@ public class Menu {
 
         studentEnrollment.populateData("default.csv");
         System.out.println("Welcome to our App");
-        System.out.println("********************");
         do {
+            System.out.println("********************");
             displayOption();
             String opt = sc.nextLine();
             switch (opt) {
@@ -85,7 +85,9 @@ public class Menu {
             if (studentEnrollment.studentExist(studentID)) {
                 break;
             } else {
-                System.out.println("Invalid id\n");
+                System.out.println("********************");
+                System.out.println("Invalid id");
+                System.out.println("********************");
             }
         }
         while (true) {
@@ -94,7 +96,9 @@ public class Menu {
             if (studentEnrollment.courseExist(courseID)) {
                 break;
             } else {
-                System.out.println("Invalid id\n");
+                System.out.println("********************");
+                System.out.println("Invalid id");
+                System.out.println("********************");
             }
         }
         System.out.println("Enter semester: ");
@@ -102,8 +106,10 @@ public class Menu {
         Enrollment e = new Enrollment(studentEnrollment.getStudent(studentID), studentEnrollment.getCourse(courseID), semester);
         if (studentEnrollment.add(e)) {
             System.out.println("Successfully added");
+            System.out.println("********************");
         } else {
             System.out.println("Enrollment not added");
+            System.out.println("********************");
         }
 
     }
@@ -121,7 +127,9 @@ public class Menu {
             if (studentEnrollment.studentExist(studentID)) {
                 break;
             } else {
-                System.out.println("Invalid id\n");
+                System.out.println("********************");
+                System.out.println("Invalid id");
+                System.out.println("********************");
             }
         }
         while (true) {
@@ -130,16 +138,18 @@ public class Menu {
             if (studentEnrollment.courseExist(courseID)) {
                 break;
             } else {
-                System.out.println("Invalid id\n");
+                System.out.println("********************");
+                System.out.println("Invalid id");
+                System.out.println("********************");
             }
         }
         System.out.println("Enter semester: ");
         String semester = sc.nextLine();
         Enrollment e = new Enrollment(studentEnrollment.getStudent(studentID), studentEnrollment.getCourse(courseID), semester);
         if (studentEnrollment.delete(e)) {
-            System.out.println("Successfully added");
+            System.out.println("Successfully deleted");
         } else {
-            System.out.println("Enrollment not added");
+            System.out.println("No enrollment exist or not deleted");
         }
     }
 
@@ -156,7 +166,9 @@ public class Menu {
             if (studentEnrollment.studentExist(studentID)) {
                 break;
             } else {
-                System.out.println("Invalid id\n");
+                System.out.println("********************");
+                System.out.println("Invalid id");
+                System.out.println("********************");
             }
         }
         while (true) {
@@ -165,7 +177,9 @@ public class Menu {
             if (studentEnrollment.courseExist(courseID)) {
                 break;
             } else {
+                System.out.println("********************");
                 System.out.println("Invalid id\n");
+                System.out.println("********************");
             }
         }
         System.out.println("Enter semester: ");
@@ -185,7 +199,7 @@ public class Menu {
             if (studentEnrollment.studentExist(studentID)) {
                 break;
             } else {
-                System.out.println("Invalid id\n");
+                System.out.println("Invalid id");
             }
         }
         System.out.println("Enter semester: ");
@@ -199,12 +213,16 @@ public class Menu {
             opt = sc.nextLine();
             if (opt.equals("y")) {
                 studentEnrollment.getCourseFileHandler().dumpToFile();
+                System.out.println("********************");
                 isRunning = false;
             } else if (opt.equals("n")) {
                 System.out.println("Proceeding");
+                System.out.println("********************");
                 isRunning = false;
             } else {
+                System.out.println("********************");
                 System.out.println("Invalid option");
+                System.out.println("********************");
             }
         } while (isRunning);
     }
@@ -221,7 +239,9 @@ public class Menu {
             if (studentEnrollment.courseExist(courseID)) {
                 break;
             } else {
-                System.out.println("Invalid id\n");
+                System.out.println("********************");
+                System.out.println("Invalid id");
+                System.out.println("********************");
             }
         }
         System.out.println("Enter semester: ");
@@ -235,12 +255,16 @@ public class Menu {
             opt = sc.nextLine();
             if (opt.equals("y")) {
                 studentEnrollment.getStudentFileHandler().dumpToFile();
+                System.out.println("********************");
                 isRunning = false;
             } else if (opt.equals("n")) {
                 System.out.println("Proceeding");
+                System.out.println("********************");
                 isRunning = false;
             } else {
+                System.out.println("********************");
                 System.out.println("Invalid option");
+                System.out.println("********************");
             }
         } while (isRunning);
     }
@@ -261,18 +285,23 @@ public class Menu {
             opt = sc.nextLine();
             if (opt.equals("y")) {
                 studentEnrollment.getCourseFileHandler().dumpToFile();
+                System.out.println("********************");
                 isRunning = false;
             } else if (opt.equals("n")) {
                 System.out.println("Proceeding");
+                System.out.println("********************");
                 isRunning = false;
             } else {
+                System.out.println("********************");
                 System.out.println("Invalid option");
+                System.out.println("********************");
             }
         } while (isRunning);
     }
 
     private void pressToContinue() {
         Scanner sc = new Scanner(System.in);
+        System.out.println("********************");
         System.out.println("Press anything to continue: ");
         String temp = sc.nextLine();
     }
