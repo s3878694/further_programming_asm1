@@ -30,6 +30,10 @@ public class Enrollment {
         return "Names: " + student.getStudentName() + "\n" + "Course: " + course.getCourseName() + "\n" + "Semester: " + semester + "\n";
     }
 
+    /***
+     * Return a String to write data to csv files
+     * @return String
+     */
     public String toCsv() {
         return student.getStudentName() + "," + course.getCourseName() + "," + semester + "\n";
     }

@@ -31,20 +31,15 @@ public class Student {
         return new Student(data[0], data[1], data[2]);
     }
 
-    /***
-     * Return a clone of Studnet
-     * @return student
-     */
-    public Student clone() {
-        return new Student(this.studentID, this.studentName, this.date);
-    }
-
-
     @Override
     public String toString() {
         return "ID: " + studentID + "\n" + "Name: " + studentName + "\n" + "Dob: " + date + "\n";
     }
 
+    /***
+     * Return a String to write data to csv files
+     * @return String
+     */
     public String toCsv() {
         return studentID + "," + studentName + "," + date + "\n";
     }

@@ -25,30 +25,15 @@ public class Course {
         return numOfCredit;
     }
 
-    /***
-     *
-     * @param courseString a String from csv file
-     * @return new course base on String data
-     */
-    public static Course parseCsvString(String courseString) {
-        String[] data = courseString.split(",");
-
-        return new Course(data[0], data[1], Integer.valueOf(data[2]));
-    }
-
-    /***
-     *
-     * @return new course base on data of the first course
-     */
-    public Course clone() {
-        return new Course(this.courseID, this.courseName, this.numOfCredit);
-    }
-
     @Override
     public String toString() {
         return "ID: " + courseID + "\n" + "Course: " + courseName + "\n" + "Credit: " + numOfCredit + "\n";
     }
 
+    /***
+     * Return a String to write data to csv files
+     * @return String
+     */
     public String toCsv() {
         return courseID + "," + courseName + "," + numOfCredit + "\n";
     }

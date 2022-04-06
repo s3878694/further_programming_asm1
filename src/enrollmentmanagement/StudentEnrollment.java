@@ -298,7 +298,7 @@ public class StudentEnrollment implements StudentEnrollmentManager {
     public Student getStudent(String studentID) {
       for (Student s : students) {
           if (s.getStudentID().equals(studentID)) {
-              return s.clone();
+              return s;
           }
       }
       return null;
@@ -312,7 +312,7 @@ public class StudentEnrollment implements StudentEnrollmentManager {
     public Course getCourse(String courseID) {
         for (Course c : courses) {
             if (c.getCourseID().equals(courseID)) {
-                return c.clone();
+                return c;
             }
         }
         return null;
