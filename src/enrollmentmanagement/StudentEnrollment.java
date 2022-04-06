@@ -224,8 +224,11 @@ public class StudentEnrollment implements StudentEnrollmentManager {
      * @param semester semester
      */
     public void printCoursesPerStudentPerSemester(String studentID, String semester) {
+        // Create a temp course arraylist
         ArrayList<Course> temp = getCoursesPerStudentPerSemester(studentID, semester);
+        // Set array list in course File handler so that it can be print to csv
         courseFileHandler.setCourses(temp);
+        // if course is empty, not print
         if (temp.isEmpty()) {
             System.out.println("There are no Courses");
         } else {
@@ -241,6 +244,7 @@ public class StudentEnrollment implements StudentEnrollmentManager {
      * @return array of Course
      */
     public ArrayList<Course> getCoursesPerSemester(String semester) {
+        // Create temp array list
         ArrayList<Course> temp = new ArrayList<>();
         for (Enrollment e : enrollments) {
             if (e.getSemester().equals(semester)) {
@@ -257,7 +261,9 @@ public class StudentEnrollment implements StudentEnrollmentManager {
      * @param semester semester
      */
     public void printCoursesPerSemester(String semester) {
+        // Create temp array list of course in semester
         ArrayList<Course> temp = getCoursesPerSemester(semester);
+        // set it so course file handler can handle data and write to csv
         courseFileHandler.setCourses(temp);
         if (temp.isEmpty()) {
             System.out.println("There are no Course in this semester");
