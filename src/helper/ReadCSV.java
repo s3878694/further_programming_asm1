@@ -6,6 +6,11 @@ import java.io.BufferedReader;
 import java.util.ArrayList;
 
 public class ReadCSV {
+    /***
+     * Read a csv and return all data in form of arraylist
+     * @param fileName String a file name
+     * @return ArrayList of Strings
+     */
     public static ArrayList<String> readCSVFile(String fileName)  {
         ArrayList<String> rows = new ArrayList<>();
 

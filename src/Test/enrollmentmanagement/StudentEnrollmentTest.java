@@ -16,10 +16,14 @@ class StudentEnrollmentTest {
 
     @org.junit.jupiter.api.Test
     void add() {
-        Enrollment e = new Enrollment(studentEnrollment.getStudent("S101312"), studentEnrollment.getCourse("COSC4030"), "2021A");
-        assertTrue(studentEnrollment.add(e));
+        Enrollment e1 = new Enrollment(studentEnrollment.getStudent("S101163"), studentEnrollment.getCourse("COSC4030"), "2020C");
+        assertTrue(studentEnrollment.add(e1));
         Enrollment e2 = new Enrollment(studentEnrollment.getStudent("S101312"), studentEnrollment.getCourse("COSC4030"), "2020C");
         assertFalse(studentEnrollment.add(e2));
+        Enrollment e3 = new Enrollment(studentEnrollment.getStudent("S101163"), studentEnrollment.getCourse("COSC4030"), "2022C");
+        assertFalse(studentEnrollment.add(e3));
+        Enrollment e4 = new Enrollment(studentEnrollment.getStudent("S101163"), studentEnrollment.getCourse("COSC4030"), "2021A");
+        assertFalse(studentEnrollment.add(e4));
     }
 
     @org.junit.jupiter.api.Test

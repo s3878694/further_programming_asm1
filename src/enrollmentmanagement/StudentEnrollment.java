@@ -47,7 +47,7 @@ public class StudentEnrollment implements StudentEnrollmentManager {
      * @return boolean
      */
     public boolean isExist(Student s) {
-        for (Student student: students) {
+        for (Student student: students) { // check if already exist student
             if (student.getStudentID().equals(s.getStudentID())) {
                 return true;
             }
@@ -61,7 +61,7 @@ public class StudentEnrollment implements StudentEnrollmentManager {
      * @return boolean
      */
     public boolean isExist(Enrollment e) {
-        for (Enrollment enrollment: enrollments) {
+        for (Enrollment enrollment: enrollments) { // check if already exist enrollment
             if(enrollment.getStudent().getStudentID().equals(e.getStudent().getStudentID()) && enrollment.getCourse().getCourseID().equals(e.getCourse().getCourseID()) && enrollment.getSemester().equals(e.getSemester())) {
                 return true;
             }
@@ -75,7 +75,7 @@ public class StudentEnrollment implements StudentEnrollmentManager {
      * @return boolean
      */
     public boolean isExist(Course c) {
-        for (Course course: courses) {
+        for (Course course: courses) { // check if already exist course
             if (course.getCourseID().equals(c.getCourseID())) {
                 return true;
             }
@@ -114,13 +114,16 @@ public class StudentEnrollment implements StudentEnrollmentManager {
      */
     @Override
     public boolean add(Enrollment e) {
-        if (!isExist(e)) {
-            enrollments.add(e);
-            enrollmentFileHandler.setEnrollments(enrollments);
-            return true;
-        } else {
-            return false;
+        if (getCoursesPerSemester(e.getSemester()).isEmpty()) { // check if course in the semester available
+            return false; // return false if there is no course
         }
+        for (Course c : getCoursesPerSemester(e.getSemester())) { // check in arraylist of course, if course is in that semester, add enrollment
+            if (c.getCourseID().equals(e.getCourse().getCourseID()) && !isExist(e)) {
+                enrollments.add(e);
+                return true;
+            }
+        }
+       return false;
     }
 
     /***
