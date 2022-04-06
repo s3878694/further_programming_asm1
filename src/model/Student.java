@@ -37,8 +37,8 @@ public class Student {
     }
 
     /***
-     * Return a String to write data to csv files
-     * @return String
+     * Function to get information from enrollment to change it into a String to write to csv
+     * @return a string under format of csv
      */
     public String toCsv() {
         return studentID + "," + studentName + "," + date + "\n";

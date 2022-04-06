@@ -194,7 +194,7 @@ public class StudentEnrollment implements StudentEnrollmentManager {
         ArrayList<Student> temp = getStudentsPerCoursePerSemester(courseID, semester);
         studentFileHandler.setStudents(temp);
         if (temp.isEmpty()) {
-            System.out.println("There are no Students");
+            System.err.println("There are no Students");
         } else {
             for (Student s : temp) {
                 System.out.println(s);
@@ -230,7 +230,7 @@ public class StudentEnrollment implements StudentEnrollmentManager {
         courseFileHandler.setCourses(temp);
         // if course is empty, not print
         if (temp.isEmpty()) {
-            System.out.println("There are no Courses");
+            System.err.println("There are no Courses");
         } else {
             for (Course c : temp) {
                 System.out.println(c);
@@ -266,7 +266,7 @@ public class StudentEnrollment implements StudentEnrollmentManager {
         // set it so course file handler can handle data and write to csv
         courseFileHandler.setCourses(temp);
         if (temp.isEmpty()) {
-            System.out.println("There are no Course in this semester");
+            System.err.println("There are no Course in this semester");
         } else {
             for (Course c : temp) {
                 System.out.println(c);

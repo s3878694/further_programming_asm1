@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class Menu {
     private StudentEnrollment studentEnrollment = new StudentEnrollment();
+    private static Scanner sc = new Scanner(System.in);
 
     public Menu() {}
 
@@ -14,7 +15,6 @@ public class Menu {
      * display User Interface for user
      */
     public void displayMainMenu() {
-        Scanner sc = new Scanner(System.in);
         boolean isRunning = true;
 
         studentEnrollment.populateData("default.csv");
@@ -84,7 +84,6 @@ public class Menu {
      * UI for add enrollment
      */
     private void addEnrollment() {
-        Scanner sc = new Scanner(System.in);
         String studentID;
         String courseID;
         while (true) {
@@ -114,10 +113,8 @@ public class Menu {
         Enrollment e = new Enrollment(studentEnrollment.getStudent(studentID), studentEnrollment.getCourse(courseID), semester);
         if (studentEnrollment.add(e)) {
             System.out.println("Successfully added");
-            System.out.println("********************");
         } else {
-            System.out.println("Enrollment not added");
-            System.out.println("********************");
+            System.err.println("Enrollment not added");
         }
 
     }
@@ -126,7 +123,6 @@ public class Menu {
      * UI for delete enrollment
      */
     private void deleteEnrollment() {
-        Scanner sc = new Scanner(System.in);
         String studentID;
         String courseID ;
         while (true) {
@@ -157,7 +153,7 @@ public class Menu {
         if (studentEnrollment.delete(e)) {
             System.out.println("Successfully deleted");
         } else {
-            System.out.println("No enrollment exist or not deleted");
+            System.err.println("No enrollment exist or not deleted");
         }
     }
 
@@ -165,7 +161,6 @@ public class Menu {
      * Get one enrollment UI
      */
     private void getOneEnrollment() {
-        Scanner sc = new Scanner(System.in);
         String studentID;
         String courseID;
         while (true) {
@@ -199,7 +194,6 @@ public class Menu {
      * Print course UI per student per semester
      */
     private void printCoursesPerStudentPerSemester() {
-        Scanner sc = new Scanner(System.in);
         String studentID;
         while (true) {
             System.out.println("Enter the student id: ");
@@ -237,7 +231,6 @@ public class Menu {
      * Print student UI per course per semester
      */
     private void printStudentsPerCoursePerSemester() {
-        Scanner sc = new Scanner(System.in);
         String courseID;
         while (true) {
             System.out.println("Enter the course id: ");
@@ -277,7 +270,6 @@ public class Menu {
      * Print course UI per semester
      */
     private void printCoursesPerSemester() {
-        Scanner sc = new Scanner(System.in);
         System.out.println("Enter semester: ");
         String semester = sc.nextLine();
         studentEnrollment.printCoursesPerSemester(semester);
@@ -302,7 +294,6 @@ public class Menu {
     }
 
     private void pressToContinue() {
-        Scanner sc = new Scanner(System.in);
         System.out.println("********************");
         System.out.println("Press anything to continue: ");
         String temp = sc.nextLine();

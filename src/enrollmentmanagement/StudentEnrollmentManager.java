@@ -4,6 +4,9 @@ import model.Enrollment;
 
 import java.util.ArrayList;
 
+/**
+ *
+ */
 public interface StudentEnrollmentManager {
     Enrollment getOne(String studentID, String courseID, String semester);
     ArrayList<Enrollment> getAll();

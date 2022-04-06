@@ -29,7 +29,7 @@ public class EnrollmentFileHandler {
             File newFile = new File("Enrollment.csv");
             FileWriter fileWriter = new FileWriter(newFile);
             if (enrollments.isEmpty()) {
-                System.out.println("No enrollment to write");
+                System.err.println("No enrollment to write");
                 fileWriter.close();
             } else {
                 for (Enrollment e : enrollments) {
@@ -39,7 +39,7 @@ public class EnrollmentFileHandler {
                 System.out.println("Added to file");
             }
         } catch (IOException e) {
-            System.out.println("Cannot save to File");
+            System.err.println("Cannot save to File");
         }
     }
 }

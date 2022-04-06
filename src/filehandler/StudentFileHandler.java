@@ -27,7 +27,7 @@ public class StudentFileHandler {
             File newFile = new File("Student.csv");
             FileWriter fileWriter = new FileWriter(newFile);
             if (students.isEmpty()) {
-                System.out.println("No student to write");
+                System.err.println("No student to write");
                 fileWriter.close();
             } else {
                 for (Student s : students) {
@@ -37,7 +37,7 @@ public class StudentFileHandler {
                 System.out.println("Added to file");
             }
         } catch (IOException e) {
-            System.out.println("Cannot save to File");
+            System.err.println("Cannot save to File");
         }
     }
 }
