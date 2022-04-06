@@ -1,6 +1,6 @@
 package enrollmentmanagement;
 
-import model.*;
+import model.Enrollment;
 
 import java.util.ArrayList;
 
