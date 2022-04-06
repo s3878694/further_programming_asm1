@@ -1,6 +1,6 @@
-package EnrollmentManagement;
-import FileHandler.*;
-import Helper.*;
+package enrollmentmanagement;
+import filehandler.*;
+import helper.*;
 import model.*;
 
 import java.util.ArrayList;

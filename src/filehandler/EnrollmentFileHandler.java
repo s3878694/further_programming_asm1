@@ -1,9 +1,6 @@
-package FileHandler;
+package filehandler;
 
-import Helper.ReadCSV;
-import model.Course;
 import model.Enrollment;
-import model.Student;
 
 import java.io.File;
 import java.io.FileWriter;

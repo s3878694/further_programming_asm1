@@ -1,4 +1,4 @@
-package EnrollmentManagement;
+package enrollmentmanagement;
 
 import model.Enrollment;
 import org.junit.jupiter.api.BeforeEach;

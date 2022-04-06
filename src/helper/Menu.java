@@ -1,7 +1,7 @@
-package Helper;
+package helper;
 
 import model.*;
-import EnrollmentManagement.*;
+import enrollmentmanagement.*;
 
 import java.util.Scanner;
 
@@ -25,36 +25,44 @@ public class Menu {
             String opt = sc.nextLine();
             switch (opt) {
                 case "0" -> {
+                    System.out.println("********************");
                     System.out.println("Quitting program");
                     isRunning = false;
                 }
                 case "1" -> {
+                    System.out.println("********************");
                     addEnrollment();
                     pressToContinue();
                 }
                 case "2" -> {
+                    System.out.println("********************");
                     deleteEnrollment();
                     pressToContinue();
                 }
                 case "3" -> {
+                    System.out.println("********************");
                     getOneEnrollment();
                     pressToContinue();
                 }
                 case "4" -> {
+                    System.out.println("********************");
                     for (Enrollment e : studentEnrollment.getAll()) {
                         System.out.println(e);
                     }
                     pressToContinue();
                 }
                 case "5" -> {
+                    System.out.println("********************");
                     printCoursesPerStudentPerSemester();
                     pressToContinue();
                 }
                 case "6" -> {
+                    System.out.println("********************");
                     printStudentsPerCoursePerSemester();
                     pressToContinue();
                 }
                 case "7" -> {
+                    System.out.println("********************");
                     printCoursesPerSemester();
                     pressToContinue();
                 }
@@ -213,11 +221,9 @@ public class Menu {
             opt = sc.nextLine();
             if (opt.equals("y")) {
                 studentEnrollment.getCourseFileHandler().dumpToFile();
-                System.out.println("********************");
                 isRunning = false;
             } else if (opt.equals("n")) {
                 System.out.println("Proceeding");
-                System.out.println("********************");
                 isRunning = false;
             } else {
                 System.out.println("********************");
@@ -255,11 +261,9 @@ public class Menu {
             opt = sc.nextLine();
             if (opt.equals("y")) {
                 studentEnrollment.getStudentFileHandler().dumpToFile();
-                System.out.println("********************");
                 isRunning = false;
             } else if (opt.equals("n")) {
                 System.out.println("Proceeding");
-                System.out.println("********************");
                 isRunning = false;
             } else {
                 System.out.println("********************");
@@ -285,11 +289,9 @@ public class Menu {
             opt = sc.nextLine();
             if (opt.equals("y")) {
                 studentEnrollment.getCourseFileHandler().dumpToFile();
-                System.out.println("********************");
                 isRunning = false;
             } else if (opt.equals("n")) {
                 System.out.println("Proceeding");
-                System.out.println("********************");
                 isRunning = false;
             } else {
                 System.out.println("********************");
